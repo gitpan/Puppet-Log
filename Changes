@@ -1,5 +1,10 @@
-Revision history for Perl extension Tk::Log.
+1998-06-22  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
 
-0.01  Wed Jul 23 17:02:08 1997
+	* v 0.2: 
+	- added show function
+	- corrected doc bugs
+
+
+0.1  Wed Jul 23 17:02:08 1997
 	- original version; created by h2xs 1.18
 

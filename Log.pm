@@ -1,9 +1,9 @@
 ############################################################
 #
-# $Header: /users/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.3 1998/03/11 08:56:38 domi Exp $
+# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.4 1998/06/22 11:38:35 domi Exp $
 #
-# $Source: /users/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
-# $Revision: 1.3 $
+# $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
+# $Revision: 1.4 $
 # $Locker:  $
 # 
 ############################################################
@@ -19,7 +19,7 @@ use Carp ;
 use strict ;
 use vars qw($VERSION) ;
 
-$VERSION = '0.1' ;
+$VERSION = '0.2' ;
 
 # see loadspecs for other names
 sub new 
@@ -77,7 +77,9 @@ sub clear
 sub display
   {
     my $self =shift ;
-    my $ref = shift ; # ref is either a toplevel or a multi manager
+    # ref is either a toplevel or a multi manager, optionnal if display was
+    # already called once.
+    my $ref = shift ; 
     my $hidden = shift || 0 ; #optionnal
 
     # load only when display is called
@@ -93,8 +95,8 @@ sub display
         return $self->{manager};
       }
 
-    die "No ref (should be either a Toplevel or a MultiManager) ",
-    "given for Puppet::Log\n" 
+    croak( "No ref (should be either a Toplevel or a MultiManager) ",
+    "given for Puppet::Log\n" )
       unless defined $ref ;
 
     if (ref($ref) eq 'Tk::Toplevel' or ref($ref) eq 'MainWindow')
@@ -121,7 +123,7 @@ sub display
       }
     else
       {
-        die "Unexpected tk object ( ",ref($ref)," ) given to Puppet::Log\n";
+        croak("Unexpected tk object ( ",ref($ref)," ) given to Puppet::Log\n");
       }
 
     $self->{'textObj'} = $self->{manager} -> newSlave
@@ -137,6 +139,16 @@ sub display
     #$self->{'data'} = [] ; #reset
 
     return $self->{manager} ;
+  }
+
+sub show
+  {
+    my $self = shift ;
+
+    if (defined $self->{manager})
+      {
+        $self->{'manager'}->show($self->{name});      
+      }
   }
 
 sub close
@@ -200,14 +212,17 @@ constructor.
 
 Clear the logs
 
-=head2 display(toplevel_ref,[Tk::Multi::Manager reference])
+=head2 display(toplevel_ref | multi_manager_reference, [hidden] )
 
 Will create the log display. The log display is in fact a Tk::Multi::Text
 window which can managed by a Tk::Multi::Manager object.
 
-top_tk_ref is the parent window object.
+ - toplevel_ref is the parent window object.
+ - multi_manager_reference is the Tk::Multi::Manager reference
+ - hidden : when hidden is 1, the log will not displayed on start-up. (default
+   is to show the log window)
 
-If you don't provide a manager reference, Puppet::Log will consider that 
+If you don't provide a multi_manager reference, Puppet::Log will consider that 
 you want the Log to appear in its own TopLevel window. So Log will create
 a new Toplevel window and create a menu manager in it.
 In this case, the menu will feature also a File->close button which will
@@ -218,6 +233,11 @@ In any case Log returns the manager reference. You may reuse this reference
 to add another Log display in the Toplevel window that Log just created.
 (See the test.pl file if this not clear enough. Curiously enough I have some
 doubts regarding my explanations)
+
+=head2 show()
+
+Will raise the log window. Note that this function is ignored if its called
+before display().
 
 =head1 AUTHOR
 

@@ -30,7 +30,6 @@ $w_menu->pack(-fill => 'x');
 
 my $f = $w_menu->Menubutton(-text => 'File', -underline => 0) 
   -> pack(side => 'left' );
-$f->command(-label => 'Quit',  -command => sub{exit;} );
 
 my $spe = $mw->Frame -> pack ;
 $spe -> Button (text => 'add', 
@@ -55,6 +54,16 @@ $log ->display($wmgr, 1) ;
 $log -> log("This text was also logged after display was created" ,
             'whenNoDisplay' => 'print') ;
 
+print "Creating new log2\n" ;
+my $log2 = new Puppet::Log('log2 test') ;
+
+print "inserting some text in log2\n";
+$log2 -> log("This text was logged but not printed") ;
+
+print "requiring display on log\n";
+$log2 ->display($wmgr,1) ;
+$f->command(-label => 'show log2',  -command => sub{$log2->show();} );
+
 print "Creating sub window toto\n";
 $toto = $wmgr -> newSlave('type'=>'MultiText', title => 'toto') ;
 
@@ -73,6 +82,8 @@ $spe -> Button (text => 'recall orphan brother',
 
 my $bmgr = $orphan -> display($mw) ;
 $orphanb -> display($bmgr) ;
+
+$f->command(-label => 'Quit',  -command => sub{exit;} );
 
 MainLoop ; # Tk's
 
