@@ -8,7 +8,7 @@ WriteMakefile(
               'PREREQ_PM' =>
               {
                'Tk' => 0,
-               'Tk::Multi::Manager' => 0,
-               'Tk::Multi::Text' => 0
+               'Tk::Multi::Manager' => '2.001',
+               'Tk::Multi::Text' => '2.001'
               }
 );

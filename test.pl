@@ -39,8 +39,8 @@ $spe -> Button (text => 'add',
   -> pack (side => 'left') ;
 
 print "creating manager\n" if $trace;
-my $wmgr = $mw -> MultiManager ( 'title' => 'log test' ,
-                             'menu' => $w_menu ) -> pack ();
+my $wmgr = $mw -> MultiManager ( 'title' => 'log test' , 'menu' => $w_menu ) 
+  -> pack (expand => 1, fill => 'both');
 
 print "ok ",$idx++,"\n";
 
@@ -65,7 +65,7 @@ $log -> log("This text was also logged after display was created" ,
 print "ok ",$idx++,"\n";
 
 print "Creating new log2\n"  if $trace ;
-my $log2 = new Puppet::Log('log2 test') ;
+my $log2 = new Puppet::Log('log2 test','help' => 'log2 dummy help') ;
 
 print "ok ",$idx++,"\n";
 
@@ -81,7 +81,8 @@ $f->command(-label => 'show log2',  -command => sub{$log2->show();} );
 print "ok ",$idx++,"\n";
 
 print "Creating sub window toto\n" if $trace ;
-$toto = $wmgr -> newSlave('type'=>'MultiText', title => 'toto') ;
+$toto = $wmgr -> newSlave('type'=>'MultiText', title => 'toto',
+                         'help' => 'dummy help for toto') ;
 
 print "ok ",$idx++,"\n";
 

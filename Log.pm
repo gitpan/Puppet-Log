@@ -1,9 +1,9 @@
 ############################################################
 #
-# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.5 1998/06/25 11:40:33 domi Exp $
+# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.7 1998/08/18 12:04:07 domi Exp $
 #
 # $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
-# $Revision: 1.5 $
+# $Revision: 1.7 $
 # $Locker:  $
 # 
 ############################################################
@@ -19,7 +19,7 @@ use Carp ;
 use strict ;
 use vars qw($VERSION) ;
 
-$VERSION = '0.3' ;
+$VERSION = '0.4' ;
 
 # see loadspecs for other names
 sub new 
@@ -30,6 +30,7 @@ sub new
     my %args = @_ ;
 
     $self->{printOut} = $args{'whenNoDisplay'};
+    $self->{help} = $args{'help'} ;
 
     $self->{'data'}= [] ;
 
@@ -115,7 +116,7 @@ sub display
         $self->{manager} = $window -> MultiManager 
           (
            'title' => 'log '.$self->{name}, 'menu' => $w_menu
-          ) -> pack ();
+          ) -> pack (expand => 1, fill => 'both');
       }
     elsif (ref($ref) eq 'Tk::Multi::Manager')
       {
@@ -130,7 +131,8 @@ sub display
       (
        'type' => 'MultiText',
        'title' => $self->{name},
-       'hidden' => $hidden 
+       'hidden' => $hidden ,
+       'help' => $self->{help}
       ) ;
 
     $self->{textObj} -> OnDestroy(sub{$self->close;}) ;
@@ -193,7 +195,7 @@ of this object or since the clear method was called.
 
 =head1 Methods
 
-=head2 new(name,['whenNoDisplay' => 'print' | 'warn' ])
+=head2 new(name,['whenNoDisplay' => 'print' | 'warn' ], [ help => ...] )
 
 Creates the log object. 'name' is the log name.
 
