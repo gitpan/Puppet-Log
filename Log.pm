@@ -1,9 +1,9 @@
 ############################################################
 #
-# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.4 1998/06/22 11:38:35 domi Exp $
+# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.5 1998/06/25 11:40:33 domi Exp $
 #
 # $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
-# $Revision: 1.4 $
+# $Revision: 1.5 $
 # $Locker:  $
 # 
 ############################################################
@@ -19,7 +19,7 @@ use Carp ;
 use strict ;
 use vars qw($VERSION) ;
 
-$VERSION = '0.2' ;
+$VERSION = '0.3' ;
 
 # see loadspecs for other names
 sub new 
