@@ -1,9 +1,9 @@
 ############################################################
 #
-# $Header: /home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.10 1999/01/05 16:12:32 domi Exp $
+# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.11 1999/08/10 13:19:35 domi Exp $
 #
-# $Source: /home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
-# $Revision: 1.10 $
+# $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
+# $Revision: 1.11 $
 # $Locker:  $
 # 
 ############################################################
@@ -22,7 +22,7 @@ use vars qw(@ISA $VERSION) ;
 
 @ISA=qw/Puppet::LogBody/ ;
 
-$VERSION = sprintf "%d.%03d", q$Revision: 1.10 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%03d", q$Revision: 1.11 $ =~ /(\d+)\.(\d+)/;
 
 # see loadspecs for other names
 
@@ -207,25 +207,25 @@ The constructor parameters are :
 
 =over 4
 
-=item title
+=item *
 
-Title of the Tk log display (optional)
+title: Title of the Tk log display (optional)
 
-=item name
+=item *
 
-Name of the log used when printing on STDOUT or STDERR (optional)
+name: Name of the log used when printing on STDOUT or STDERR (optional)
 
-=item how
+=item *
 
-Specifies what to do when a log is sent to the object (either print on
-STDOUT, warn on STDERR). By default the logs will not be printed or
-warned. (optional)
+how: Specifies what to do when a log is sent to the object (either
+print on STDOUT, warn on STDERR). By default the logs will not be
+printed or warned. (optional)
 
-=item help
+=item *
 
-The argument may be a string or a sub reference.  When the help menu
-is invoked, either the help string will be displayed in a Tk::Dialog
-box or the sub will be run. In this case it is the user's
+help The argument may be a string or a sub reference.  When the help
+menu is invoked, either the help string will be displayed in a
+Tk::Dialog box or the sub will be run. In this case it is the user's
 responsability to provide a readable help from the sub.  (See
 L<Tk::Multi::Manager/"help"> for further details)
 
@@ -233,12 +233,20 @@ L<Tk::Multi::Manager/"help"> for further details)
 
 =head1 Methods
 
-=head2 log(text,['how' => 'print' | 'warn' ])
+=head2 log(text,...)
 
 Will log the passed text
 
-The 'how' parameter will supersede the 'how' parameter passed to the
-constructor.
+Optional parameters are:
+
+=over 4
+
+=item *
+
+how: will supersede the 'how' parameter passed to the constructor. If
+'how' is set to undef, the log will not be printed or warned.
+
+=back
 
 =head2 clear()
 
