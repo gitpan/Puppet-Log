@@ -1,0 +1,80 @@
+This class defines a log facility based on Tk usable by any class.
+
+This log class will store all text passed to it. When its display
+is not opened, the log text may be written on stdout. If a display is
+opened, the text display will be updated with the log text.
+
+When the display is created it will feature all logs written since the
+creation of this object or since the clear method was called.
+
+
+Puppet::* classes are designed to provide an access to the 
+object using a GUI based on Tk.
+
+The basic idea is when you construct a Puppet::* object, you have all the
+functionnality of the object without the GUI. Then, when the need arises,
+you may (or the class may decide to) open the GUI of the object.
+On the other hand, if the need does not arise, you may instanciare a lot of 
+object wihout cluttering your display.
+
+For instance, if you have an object (say a ProcessGroup) 
+controlling a set of proceses (Process objects). The user may start the
+ProcessGroup through its GUI. Then all processes are run. If one of them
+fails, it will raise its own GUI to display the cause of the problem and 
+let the user decide what to do. 
+
+This Log facility is but the tiniest bit of the Puppet objects I have
+in store (or in mind).
+
+Future Puppet will feature :
+Puppet::Any (base class for other Puppets)
+Puppet::Twins (for RPC calls and Puppet features)
+Puppet::Process
+Puppet::ProcessGroup
+Puppet::AtomicTest (no nuke there, its just a test that cannot be divided)
+
+Don't ask me for a release or a release date of them. I have prototypes of
+most of them and I'll release them when I get the time to put them in a proper 
+shape and to document them.
+
+
+This is Version 0.01.  See the "Changes" file for details on
+the new features and fixes in this release.
+
+This module was written with perl5.004. 
+
+See the embedded documentation in the module for more details.
+
+Comments and suggestions are always welcome.
+
+Note that this module is in alpha state. Its interface may change (but
+I hope not).
+
+Legal mumbo jumbo:
+
+ Copyright (c) 1998 Dominique Dumont. All rights reserved.
+ This program is free software; you can redistribute it and/or
+ modify it under the same terms as Perl itself.
+ THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+ WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+
+ - Dominique Dumont
+   dominique_dumont@grenoble.hp.com
+
+---------------------------------------------------------------------
+INSTALLATION
+
+   	 gunzip -c <dist_file>.tar.gz | tar xvf -
+   	 cd <dist_directory>
+   	 perl Makefile.PL
+   	 make test          
+   	 make install
+
+
+
+
+
+
+
