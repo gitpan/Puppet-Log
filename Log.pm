@@ -1,9 +1,9 @@
 ############################################################
 #
-# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.7 1998/08/18 12:04:07 domi Exp $
+# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.8 1998/11/25 16:40:58 domi Exp $
 #
 # $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
-# $Revision: 1.7 $
+# $Revision: 1.8 $
 # $Locker:  $
 # 
 ############################################################
@@ -19,7 +19,7 @@ use Carp ;
 use strict ;
 use vars qw($VERSION) ;
 
-$VERSION = '0.4' ;
+$VERSION = '0.5' ;
 
 # see loadspecs for other names
 sub new 
@@ -31,6 +31,7 @@ sub new
 
     $self->{printOut} = $args{'whenNoDisplay'};
     $self->{help} = $args{'help'} ;
+    $self->{fullName} = $args{'fullName'} ;
 
     $self->{'data'}= [] ;
 
@@ -56,13 +57,14 @@ sub log
       }
     elsif (defined $printOut)
       {
+        my $str = defined $self->{fullName}? $self->{fullName}.' ':'' ;
         if ($printOut eq 'print')
           {
-            print ref($self),"::",$self->{name},": \n\t",$text ;
+            print $str,$self->{name},": \n\t",$text ;
           }
         else
           {
-            warn ref($self),"::",$self->{name},": \n\t",$text ;
+            warn $str,$self->{name},": \n\t",$text ;
           }
       }
   }

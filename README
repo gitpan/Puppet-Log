@@ -46,9 +46,6 @@ See the embedded documentation in the module for more details.
 
 Comments and suggestions are always welcome.
 
-Note that this module is in alpha state. Its interface may change (but
-I hope not).
-
 Legal mumbo jumbo:
 
  Copyright (c) 1998 Dominique Dumont. All rights reserved.

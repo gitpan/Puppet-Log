@@ -45,15 +45,16 @@ my $wmgr = $mw -> MultiManager ( 'title' => 'log test' , 'menu' => $w_menu )
 print "ok ",$idx++,"\n";
 
 print "Creating new log\n" if $trace ;
-my $log = new Puppet::Log('log test') ;
+my $log = new Puppet::Log('log test', fullName => 'big test') ;
 
 print "ok ",$idx++,"\n";
 
 print "inserting some text in log\n" if $trace ;
 $log -> log("This text was logged but not printed") ;
-#$log -> log("This text was logged and printed",'whenNoDisplay' => 'print') ;
-#$log -> log("This text was also logged and warned" ,
-#            'whenNoDisplay' => 'print') ;
+$log -> log("This text was logged and printed",'whenNoDisplay' => 'print') 
+  if $trace ;
+$log -> log("This text was also logged and warned" ,
+            'whenNoDisplay' => 'print') if $trace ;
 
 print "ok ",$idx++,"\n";
 

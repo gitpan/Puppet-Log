@@ -5,6 +5,9 @@ WriteMakefile(
               'NAME'	   => 'Puppet::Log',
               'VERSION_FROM' => 'Log.pm', # finds $VERSION
               'dist' => {COMPRESS=>'gzip -9f', SUFFIX => 'gz'},
+              ($] >= 5.005 ?
+               (ABSTRACT   => 'Logging facility based on Tk',
+                AUTHOR     => 'Dominique Dumont (domi@barrayar.grenoble.hp.com)') : ()),
               'PREREQ_PM' =>
               {
                'Tk' => 0,
