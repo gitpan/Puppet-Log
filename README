@@ -1,46 +1,33 @@
-This class defines a log facility based on Tk usable by any class.
+This class implements a log facility with an optional Tk display. 
 
-This log class will store all text passed to it. When its display is
-not opened, the log text may be written on stdout. If a display is
-opened, the text display will be updated with the log text.
+I.e once the class is created, you can log messages in it, but the Tk
+display does no need to be created at the same time. You may invoke
+later only when you need it.
 
-When the display is created it will feature all logs written since the
-creation of this object or since the clear method was called.
+When the Tk display is not invoked, the log can be either printed on
+STDOUT or warned on STDERR (or stay hidden). But in any case, the log
+message will be stored in the class so that all log messages can be
+retrieved later by the user or by the Tk display when invoked.
 
-Each log window can have a help button that will show a help message
-provided by the user.
+Once the Tk display is invoked, it will be updated by new logs.
 
-Puppet::* classes are designed to provide an access to the object
-using a GUI based on Tk.
+Suggested DSLI entry in the Tk Module list, section 'Modules using Tk':
+Puppet::
+Log            bdpO  Logging facility based on Tk                  DDUMONT
 
-The basic idea is when you construct a Puppet::* object, you have all
-the functionnality of the object without the GUI. Then, when the need
-arises, you may (or the class may decide to) open the GUI of the
-object.  On the other hand, if the need does not arise, you may
-instanciare a lot of object wihout cluttering your display.
+About Puppet::* classes
 
-For instance, if you have an object (say a ProcessGroup) controlling a
-set of proceses (Process objects). The user may start the ProcessGroup
-through its GUI. Then all processes are run. If one of them fails, it
-will raise its own GUI to display the cause of the problem and let the
-user decide what to do.
+Puppet classes are a set of utility classes which can be used by any object.
+If you use directly the Puppet::*Body class, you get the plain functionnality.
+And if you use the Puppet::* class, you can get the same functionnality and
+a Tk Gui to manage it. 
 
-This Log facility is but the tiniest bit of the Puppet objects I have
-in store (or in mind).
-
-Future Puppet will feature :
-Puppet::Any (base class for other Puppets)
-Puppet::Twins (for RPC calls and Puppet features)
-Puppet::Process
-Puppet::ProcessGroup
-Puppet::AtomicTest (no nuke there, its just a test that cannot be divided)
-
-Don't ask me for a release or a release date of them. I have
-prototypes of most of them and I'll release them when I get the time
-to put them in a proper shape and to document them.
+Starting from version 1.010, Puppet::Log was splitted between a "core" 
+functionnality (in Puppet::LogBody), the Tk part (in Tk::Multi::Toplevel) 
+and the glue (this class). Version 1.010 is compatible with previous versions.
 
 
-This module was written with perl5.004. 
+This module was written with perl5.005
 
 See the embedded documentation in the module for more details.
 
@@ -48,7 +35,7 @@ Comments and suggestions are always welcome.
 
 Legal mumbo jumbo:
 
- Copyright (c) 1998 Dominique Dumont. All rights reserved.
+ Copyright (c) 1998-1999 Dominique Dumont. All rights reserved.
  This program is free software; you can redistribute it and/or
  modify it under the same terms as Perl itself.
  THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
