@@ -1,3 +1,4 @@
+# -*- cperl -*-
 # Before `make install' is performed this script should be runnable with
 # `make test'. After `make install' it should work as `perl test.pl'
 
@@ -30,13 +31,13 @@ my $w_menu = $mw->Frame(-relief => 'raised', -borderwidth => 2);
 $w_menu->pack(-fill => 'x');
 
 my $f = $w_menu->Menubutton(-text => 'File', -underline => 0) 
-  -> pack(side => 'left' );
+  -> pack(-side => 'left' );
 
 $f->command(-label => 'Quit',  -command => sub{$mw->destroy;} );
 
 print "creating manager\n" if $trace;
 my $wmgr = $mw -> MultiManager ( 'title' => 'log test' , 'menu' => $w_menu ) 
-  -> pack (expand => 1, fill => 'both');
+  -> pack (-expand => 1, -fill => 'both');
 
 print "ok ",$idx++,"\n";
 

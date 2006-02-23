@@ -1,3 +1,8 @@
+2006-02-23  Dominique Dumont  <domi@komarr.grenoble.hp.com> v1.012
+
+	* Log.pm (new): default help is '' instead of undef (prevents
+	Tk::ROText to die)
+
 v 1.011 1999-08-10  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
 
 	* Log.pm (close): doc update

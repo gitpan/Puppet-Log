@@ -8,7 +8,7 @@ WriteMakefile
    'dist' => {COMPRESS=>'gzip -9f', SUFFIX => 'gz'},
    ($] >= 5.005 ?
     (ABSTRACT   => 'Log facility based on Tk',
-     AUTHOR     => 'Dominique Dumont (domi@barrayar.grenoble.hp.com)') : ()),
+     AUTHOR     => 'Dominique Dumont (domi@komarr.grenoble.hp.com)') : ()),
    'PREREQ_PM' =>
    {
     'Tk' => 0,

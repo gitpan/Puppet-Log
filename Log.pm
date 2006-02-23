@@ -1,14 +1,14 @@
 ############################################################
 #
-# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v 1.11 1999/08/10 13:19:35 domi Exp $
+# $Header: /home/domi/perlDev/old/Puppet_Log/RCS/Log.pm,v 1.12 2006/02/23 08:25:56 domi Exp $
 #
-# $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_Log/RCS/Log.pm,v $
-# $Revision: 1.11 $
+# $Source: /home/domi/perlDev/old/Puppet_Log/RCS/Log.pm,v $
+# $Revision: 1.12 $
 # $Locker:  $
 # 
 ############################################################
 
-# Copyright (c) 1998 Dominique Dumont. All rights reserved.
+# Copyright (c) 1998,1999,2006 Dominique Dumont. All rights reserved.
 # This program is free software; you can redistribute it and/or
 # modify it under the same terms as Perl itself.
 
@@ -22,7 +22,7 @@ use vars qw(@ISA $VERSION) ;
 
 @ISA=qw/Puppet::LogBody/ ;
 
-$VERSION = sprintf "%d.%03d", q$Revision: 1.11 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%03d", q$Revision: 1.12 $ =~ /(\d+)\.(\d+)/;
 
 # see loadspecs for other names
 
@@ -45,9 +45,9 @@ sub new
         carp "whenNoDisplay parameter is deprecated with Puppet::Log->new\n";
         $args{how}=delete $args{whenNoDisplay};
       }
-          
-    
-    my $help = delete $args{'help'} ;
+
+
+    my $help = delete $args{'help'} || '';
     # parameter 'title' is a short name for the Tk window
     # parameter 'name' is a long name for the casual print
 
@@ -315,7 +315,7 @@ a lot of objects without cluttering your display.
 
 Dominique Dumont, Dominique_Dumont@grenoble.hp.com
 
-Copyright (c) 1998-1999 Dominique Dumont. All rights reserved.  This
+Copyright (c) 1998-1999,2006 Dominique Dumont. All rights reserved.  This
 program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 

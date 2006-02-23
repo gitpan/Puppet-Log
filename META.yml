@@ -1,0 +1,15 @@
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Puppet-Log
+version:      1.012
+version_from: Log.pm
+installdirs:  site
+requires:
+    Puppet::LogBody:               0
+    Tk:                            0
+    Tk::Multi::Manager:            2.001
+    Tk::Multi::Text:               2.001
+    Tk::Multi::Toplevel:           0
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.30
